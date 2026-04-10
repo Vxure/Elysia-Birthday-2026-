@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Elysia 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Quicksand:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Floating particles container -->
+  <div id="particles"></div>
+
+  <!-- ========== SECTION 1: Landing / Scroll Reveal ========== -->
+  <section id="landing">
+    <div class="landing-inner">
+      <p class="reveal-line" data-delay="0">Hi Elysia,</p>
+      <p class="reveal-line" data-delay="1">it's your 23rd birthday honey!</p>
+      <p class="reveal-line" data-delay="2">so I wanted to wish you a happy birthday gorgeous</p>
+      <p class="reveal-line" data-delay="3">I hope you enjoy the day we have planned and have the best birthday yet..
+      </p>
+      <p class="reveal-line" data-delay="4">..oh? there's a surprise?</p>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 2: Envelope ========== -->
+  <section id="envelope-section">
+
+    <div class="envelope-wrapper" id="envelope-wrapper">
+      <!-- Letter that slides out (above envelope) -->
+      <div class="letter" id="letter">
+        <div class="letter-content">
+          <p class="letter-heading">A little something for you.. </p>
+          <div class="letter-divider"></div>
+          <p class="letter-body">Hold your horses, it's nothing to write home about..
+          </p>
+          <p class="letter-continue" id="letter-continue">Tap to continue 🎁</p>
+        </div>
+      </div>
+
+      <div class="envelope" id="envelope">
+        <!-- Front face -->
+        <div class="envelope-front">
+          <span class="envelope-label">To Elysia</span>
+          <div class="envelope-heart">♥</div>
+        </div>
+        <!-- Back face -->
+        <div class="envelope-back">
+          <div class="envelope-flap" id="envelope-flap"></div>
+          <div class="envelope-body-back"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="birthday-popup" id="birthday-popup">
+    <div class="gift-card" id="gift-card">
+      <p class="gift-card-text" id="gift-card-text">Unlimited shopping spree on Regan 🤑*</p>
+      <p class="gift-card-fine-print" id="gift-card-fine-print">*Terms and conditions apply. Exclusions may apply.
+        Contact Regan for terms and conditions.</p>
+      <p class="gift-card-claimed" id="gift-card-claimed">Claimed! Hope you enjoy shopping, and remember the rule..</p>
+    </div>
+  </div>
+
+  <!-- Overlay for dimming -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Music toggle -->
+  <button class="music-toggle" id="music-toggle" aria-label="Toggle music">
+    <span class="music-icon">♪</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

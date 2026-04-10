@@ -1,0 +1,559 @@
+/* ===================================================
+   Elysia Birthday 2026 — Dreamy Romantic Stylesheet
+   =================================================== */
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Dancing Script', cursive;
+  color: #5a3e4b;
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 25%, #fff5ee 50%, #f3e8ff 75%, #fdf2f8 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ---------- Floating Particles ---------- */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  bottom: -60px;
+  opacity: 0;
+  animation: floatUp linear forwards;
+  pointer-events: none;
+  user-select: none;
+}
+
+.particle.heart {
+  color: #f9a8d4;
+  text-shadow: 0 0 6px rgba(249, 168, 212, 0.5);
+}
+
+.particle.sparkle {
+  color: #fbbf24;
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg) scale(0.5);
+  }
+
+  10% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: translateY(-50vh) rotate(180deg) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-110vh) rotate(360deg) scale(0.3);
+  }
+}
+
+/* ---------- Section Shared ---------- */
+section {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+}
+
+
+/* ========================================
+   SECTION 1 — Landing / Sequential Reveal
+   ======================================== */
+#landing {
+  min-height: 100vh;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.landing-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.reveal-line {
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  max-width: 700px;
+  line-height: 1.5;
+  position: absolute;
+}
+
+.reveal-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-line.fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* ========================================
+   SECTION 2 — Envelope
+   ======================================== */
+#envelope-section {
+  min-height: 100vh;
+  perspective: 1200px;
+  padding-bottom: 12vh;
+}
+
+.envelope-wrapper {
+  position: relative;
+  width: 320px;
+  height: 220px;
+  cursor: pointer;
+  animation: bob 3s ease-in-out infinite;
+  overflow: visible;
+}
+
+@keyframes bob {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.envelope {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.envelope.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Front */
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  background: linear-gradient(145deg, #f5e6d3, #faebd7);
+  border-radius: 12px;
+  border: 2px solid #e8d5c0;
+  box-shadow:
+    0 8px 32px rgba(180, 140, 120, 0.25),
+    inset 0 -40px 60px rgba(200, 170, 140, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.envelope-label {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #8b5e6b;
+  letter-spacing: 0.05em;
+}
+
+.envelope-heart {
+  font-size: 1.4rem;
+  color: #e88fa5;
+  animation: heartPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+}
+
+/* Back */
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border-radius: 12px;
+  overflow: visible;
+}
+
+.envelope-body-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #f0dcc8, #e8d0b8);
+  border-radius: 12px;
+  border: 2px solid #d4b89a;
+  box-shadow: 0 8px 32px rgba(180, 140, 120, 0.25);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  height: 55%;
+  background: linear-gradient(180deg, #e0c9b0, #d4b89a);
+  clip-path: polygon(0 0, 50% 65%, 100% 0);
+  border: 2px solid #c9a882;
+  transform-origin: top center;
+  transition: transform 0.8s 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
+}
+
+.envelope.opened .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+/* Letter */
+.letter {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%) translateY(0);
+  width: 280px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem 1.6rem;
+  opacity: 0;
+  transition: transform 1s 1.6s ease, opacity 0.8s 1.6s ease;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.letter.revealed {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-105%);
+  pointer-events: auto;
+}
+
+.letter-content {
+  text-align: center;
+}
+
+.letter-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #8b5e6b;
+  margin-bottom: 0.8rem;
+}
+
+.letter-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e88fa5, transparent);
+  margin: 0 auto 0.8rem;
+}
+
+.letter-body {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #7a5568;
+  line-height: 1.6;
+}
+
+.letter-continue {
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #d6366e;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeInSoft 1s 2.8s ease forwards;
+  transition: transform 0.3s ease;
+}
+
+.letter-continue:hover {
+  transform: scale(1.08);
+}
+
+/* ========================================
+   Gift Card Popup
+   ======================================== */
+.birthday-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+.birthday-popup.active {
+  opacity: 1;
+  pointer-events: auto;
+  perspective: 1200px;
+}
+
+.gift-card {
+  width: 440px;
+  height: 260px;
+  background: linear-gradient(145deg, #fce4ec 0%, #f8bbd0 40%, #f48fb1 70%, #ec407a 100%);
+  border-radius: 16px;
+  border: 2px solid #f06292;
+  box-shadow:
+    0 0 80px rgba(244, 114, 182, 0.3),
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    inset 0 0 40px rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transform: scale(0) rotateY(0deg);
+  transition: none;
+  transform-style: preserve-3d;
+}
+
+/* Vertical axis spin entrance */
+.birthday-popup.active .gift-card {
+  animation: sparkleSpin 3s ease-out forwards;
+}
+
+@keyframes sparkleSpin {
+  0% {
+    transform: scale(0) rotateY(0deg);
+    opacity: 0;
+  }
+
+  15% {
+    transform: scale(1) rotateY(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1) rotateY(1080deg);
+    opacity: 1;
+  }
+}
+
+/* Gift card text */
+.gift-card-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  opacity: 0;
+  z-index: 2;
+  animation: none;
+}
+
+.birthday-popup.active .gift-card-text {
+  animation: fadeInSmooth 1.2s 3s ease forwards;
+}
+
+@keyframes fadeInSmooth {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Fine print */
+.gift-card-fine-print {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  text-align: center;
+  margin-top: 0.4rem;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.6s ease;
+  animation: none;
+}
+
+.birthday-popup.active .gift-card-fine-print {
+  animation: fadeInSmooth 1.2s 3s ease forwards;
+}
+
+/* Hide fine print when claimed message is visible */
+.gift-card-claimed.visible~.gift-card-fine-print,
+.gift-card-fine-print:has(~ .gift-card-claimed.visible) {
+  opacity: 0 !important;
+  animation: none !important;
+}
+
+/* Claimed message */
+.gift-card-claimed {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fdf5e6;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-top: 1.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  z-index: 2;
+  line-height: 1.6;
+}
+
+.gift-card-claimed.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInSoft {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   Overlay (dimming background)
+   ======================================== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+  z-index: 50;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* When popup is active, lift it above overlay */
+.birthday-popup.active {
+  z-index: 70;
+}
+
+/* ========================================
+   Music Toggle
+   ======================================== */
+.music-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #f0b8c8;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.music-toggle:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: scale(1.1);
+}
+
+.music-icon {
+  font-size: 1.3rem;
+  color: #c06080;
+}
+
+.music-toggle.muted .music-icon {
+  opacity: 0.35;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 600px) {
+  .envelope-wrapper {
+    width: 260px;
+    height: 180px;
+  }
+
+  .letter {
+    width: 230px;
+    padding: 1.4rem 1.2rem;
+  }
+
+  .gift-card {
+    width: 340px;
+    height: 200px;
+  }
+}
